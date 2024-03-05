@@ -10,7 +10,7 @@ import Author from './pages/Author'
 import MenuCustom from './components/MenuCustom'
 import Footer from './components/Footer'
 
-// IMPORTATION DE CSS
+// IMPORTATION DE CSS.
 import 'tailwindcss/tailwind.css'
 import './App.css'
 
