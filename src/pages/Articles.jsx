@@ -138,7 +138,8 @@ const Articles = () => {
     const [userSearch, setUserSearch] = useState()
     const [filteredArticles, setFilteredArticles] = useState(articles)
     
-    
+    // METHODE SORT POUR TRIER UN TABLEAU (a et b = élément du tableau) - TRIER PAR LA DATE -------
+    articles.sort((a, b) => new Date(b.date) - new Date(a.date))
     
     // FONCTION POUR LA BARRE DE RECHERCHE ----
     // METHODE ".filter()" COMBINEE A LA METHODE ".includes()"
@@ -158,7 +159,10 @@ const Articles = () => {
       setFilteredArticles(selected) 
     }
     
-    
+    const compterNombresMots = (aCompter) => {
+      let nombreMots = aCompter.match(/\b\w+\b/g);
+      return nombreMots.length
+    }
     
     
     return (
@@ -202,9 +206,29 @@ const Articles = () => {
                 <p className="block text-base font-light leading-relaxed text-inherit">
                    {oneArticles.summary} {/*On va afficher le summary de chaque article */}
                 </p>
+                {compterNombresMots(oneArticles.content) < 250 && (
                 <p className="text-sm text-gray-600 mt-4">
-                  ⏳ Temps de lecture: 2 mins {/* Vous affichez le vrai temps de lecture en bonus */}
+                   ⏳  Temps de lecture : moins d'une minute 
                 </p>
+                )}
+                
+                {compterNombresMots(oneArticles.content) >= 250 && compterNombresMots(oneArticles.content) < 500 && (
+                <p className="text-sm text-gray-600 mt-4">
+                  ⏳ Temps de lecture: 1 minute
+                </p>
+                )}
+                
+                {compterNombresMots(oneArticles.content) >= 500 && compterNombresMots(oneArticles.content) < 750 && (
+                <p className="text-sm text-gray-600 mt-4">
+                  ⏳ Temps de lecture: 2 minutes
+                </p>
+                )}
+                
+                {compterNombresMots(oneArticles.content) >= 750 && compterNombresMots(oneArticles.content) < 1000 && (
+                <p className="text-sm text-gray-600 mt-4">
+                  ⏳ Temps de lecture: plus de 3 minutes
+                </p>
+                )}
               </div>
               <div className="flex justify-between items-center p-6 pt-0">
                 <div className="flex items-center">

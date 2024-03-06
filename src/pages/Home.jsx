@@ -258,9 +258,14 @@ const articles = [
 const Home = () => {
     const [newArticles, setNewArticles] = useState([])
   
-  
+    // METHODE SORT POUR TRIER UN TABLEAU (a et b = élément du tableau) - TRIER PAR LA DATE -------
+    articles.sort((a, b) => new Date(b.date) - new Date(a.date))
     
-  
+      
+      let newArray = articles.slice(0, 0, articles[0], articles[1], articles[2])
+      
+      setNewArticles(newArray)
+   
     return (
       <div className="min-h-screen bg-[#0E1217]">
         <div className="container mx-auto px-4 pt-10">
