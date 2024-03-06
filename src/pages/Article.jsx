@@ -167,25 +167,25 @@ const ArticlePage = () => {
                 <span>{article.author}</span>
               </div>
               <div className="text-gray-400 mb-2">📅 {new Date(article.date).toLocaleDateString()}</div>
-              {compterNombresMots(oneArticles.content) < 250 && (
+              {compterNombresMots(article.content) < 250 && (
                 <p className="text-sm text-gray-600 mt-4">
                    ⏳  Temps de lecture : moins d'une minute 
                 </p>
                 )}
                 
-                {compterNombresMots(oneArticles.content) >= 250 && compterNombresMots(oneArticles.content) < 500 && (
+                {compterNombresMots(article.content) >= 250 && compterNombresMots(oneArticles.content) < 500 && (
                 <p className="text-sm text-gray-600 mt-4">
                   ⏳ Temps de lecture: 1 minute
                 </p>
                 )}
                 
-                {compterNombresMots(oneArticles.content) >= 500 && compterNombresMots(oneArticles.content) < 750 && (
+                {compterNombresMots(article.content) >= 500 && compterNombresMots(oneArticles.content) < 750 && (
                 <p className="text-sm text-gray-600 mt-4">
                   ⏳ Temps de lecture: 2 minutes
                 </p>
                 )}
                 
-                {compterNombresMots(oneArticles.content) >= 750 && compterNombresMots(oneArticles.content) < 1000 && (
+                {compterNombresMots(article.content) >= 750 && compterNombresMots(oneArticles.content) < 1000 && (
                 <p className="text-sm text-gray-600 mt-4">
                   ⏳ Temps de lecture: plus de 3 minutes
                 </p>
