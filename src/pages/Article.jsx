@@ -144,6 +144,12 @@ const ArticlePage = () => {
         setArticle(selected)   //  LA VARIABLE SELECTED EST ELLE MEME STOCKEE DANS LE STATE "article"                            
     },[])
 
+   // FONCTION POUR CALCULER LE NOMBRE DE MOT DANS UNE CHAINE DE CARACTERE -----
+    const compterNombresMots = (aCompter) => {
+      let nombreMots = aCompter.match(/\b\w+\b/g);
+      return nombreMots.length
+    }
+    
   return (
     <>
     { article && (
@@ -161,7 +167,29 @@ const ArticlePage = () => {
                 <span>{article.author}</span>
               </div>
               <div className="text-gray-400 mb-2">📅 {new Date(article.date).toLocaleDateString()}</div>
-              <div className="text-gray-400">⏳ Temps de lecture 2 mins</div>
+              {compterNombresMots(oneArticles.content) < 250 && (
+                <p className="text-sm text-gray-600 mt-4">
+                   ⏳  Temps de lecture : moins d'une minute 
+                </p>
+                )}
+                
+                {compterNombresMots(oneArticles.content) >= 250 && compterNombresMots(oneArticles.content) < 500 && (
+                <p className="text-sm text-gray-600 mt-4">
+                  ⏳ Temps de lecture: 1 minute
+                </p>
+                )}
+                
+                {compterNombresMots(oneArticles.content) >= 500 && compterNombresMots(oneArticles.content) < 750 && (
+                <p className="text-sm text-gray-600 mt-4">
+                  ⏳ Temps de lecture: 2 minutes
+                </p>
+                )}
+                
+                {compterNombresMots(oneArticles.content) >= 750 && compterNombresMots(oneArticles.content) < 1000 && (
+                <p className="text-sm text-gray-600 mt-4">
+                  ⏳ Temps de lecture: plus de 3 minutes
+                </p>
+                )}
             </div>
           </div>
           <div className="mt-6">
